@@ -1,0 +1,92 @@
+%% Deimantas Galcius, deimi@vtex.lt
+%% Fri Oct 31 14:56:12 +0200 2014
+%%
+%% run: vtex 2010 4ht htlatex "html"
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\begin{document}
+
+
+
+
+
+
+\def\charline{\global\advance\charpos by1\relax\number\charpos}
+
+\ifdefined\HCode
+% \def\xleft{\NextPictureFile{\jobname-x-\number\charpos.png}\Picture+{}{\mfont\char\charpos}\EndPicture}
+ \def\xleft{\Picture+{}{\mfont\char\charpos}\EndPicture}
+ \def\xright{\NoFonts{\mfont\char\charpos}\EndNoFonts}
+ \def\Hline{\HCode{<br/><hr/>}}
+ \def\begindiv{\HCode{<div class="charlist">}}
+ \def\enddiv{\HCode{</div>}}
+ \def\head#1{\HCode{<h2>#1</h2>}}
+\else
+  \gdef\xleft{\hbox{\mfont\char\charpos}}
+  \gdef\xright{\fbox{\mfont\char\charpos}}
+  \let\Hline\relax
+  \def\head#1{\section*{#1}}
+  \let\begindiv\relax
+  \let\enddiv\relax
+\fi
+\makeatletter
+\newif\ifvalidchar
+
+
+
+\parindent0pt
+\makeatletter
+
+
+
+\def\startpos{0}
+\def\stoppos{127}
+\def\stoppos{255}
+\newcount\charpos
+
+
+\@for\@i:=\fontlist\do{
+%\show\@i
+%\def\testfont.{MTGU}
+\def\testfont.{\@i}
+\font\mfont=\testfont. at 10pt
+\charpos=\startpos
+\advance\charpos by-1
+
+
+
+\head{\testfont.}
+
+\begindiv
+
+
+\@whilenum\charpos<\stoppos\do{%
+   \global\validchartrue
+
+%   \show\validchartrue
+
+
+% \hbox{\hbox to 2pc{\hss\relax\charline\relax} \hspace{2em}  \left \hspace{1em}  \right\hss}\HCode{<br/><hr/>}\par
+   \global\advance\charpos by1\relax
+   \setbox0\hbox{\mfont\char\charpos}%
+   \ifdim\wd0=0pt\relax
+    \ifdim\ht0=0pt\relax
+     \ifdim\dp0=0pt\relax
+     \global\validcharfalse
+     \fi
+    \fi
+   \fi
+
+  \ifvalidchar
+%    \xleft 
+  \hbox{\hbox to 2pc{\hss\relax \number\charpos \relax} \hspace{2em}  \xleft \hspace{1em}  \xright\hss}\Hline\par
+  \fi
+}
+
+\enddiv
+
+} % end @for
+
+
+\end{document}

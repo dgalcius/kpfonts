@@ -1,0 +1,9 @@
+#!/bin/bash
+
+latex -halt-on-error -synctex=1 -recorder -jobname $1 "\def\fontlist{$1}\input{tex4ht_hcode}\HCode charpos.cfg,html,charset=utf-8.a.b.c.\input{charpos}"
+latex -halt-on-error -synctex=1 -recorder -jobname $1 "\def\fontlist{$1}\input{tex4ht_hcode}\HCode charpos.cfg,html,charset=utf-8.a.b.c.\input{charpos}"
+latex -halt-on-error -synctex=1 -recorder -jobname $1 "\def\fontlist{$1}\input{tex4ht_hcode}\HCode charpos.cfg,html,charset=utf-8.a.b.c.\input{charpos}"
+tex4ht $1 -cunihtf
+t4ht $1  -cunihtf -p 
+
+
