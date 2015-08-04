@@ -1,0 +1,703 @@
+%       tex tex4ht-fonts-kpfonts
+% or    ht tex tex4ht-fonts-kpfonts
+%
+% Copyright (C) 2014 Deimantas Galcius, deimi@vtex.lt
+
+\input tex4ht.sty    
+   \Preamble{xhtml,th4,sections+}
+\EndPreamble
+\input ProTex.sty          
+%\AlProTex{c,<<<>>>,`,title,list,ClearCode,_^}
+\AlProTex{c,<<<>>>,`,title,list,`,ClearCode,_^}
+
+
+\def\HOME{./tex4ht.dir/}
+\def\DTDS{./dtd.dir/}           
+\def\SOURCE{./html.dir/}
+
+\def\MYdir{\HOME texmf/tex4ht/ht-fonts}
+
+
+\newwrite\dbcs     
+\newwrite\unicode  
+
+\def\AddFont{\futurelet\ext\AddFontA}
+\def\AddFontA{%
+   \if [\ext \def\ext[##1]{\def\ext{##1}\AddFontB}%
+   \else     \def\ext{\def\ext{htf}\AddFontB}\fi
+   \ext}
+\def\AddFontB#1#2{%
+   \Comment{}{}\OutputCode[\ext]\<#1\>%
+   \let\StartDir=\empty  \def\EndDir{#2}\MakeDir
+   \ifx \WWWdir\Undef \else
+      \Needs{"cp #1.\ext\space \WWWdir /#2.\ext"}%
+      \Needs{"chmod 644 \WWWdir /#2.\ext"}%
+   \fi
+   \Needs{"mv #1.\ext\space \MYdir /#2.\ext"}%
+   }
+\def\MakeDir{\relax
+   \expandafter \ifx  \csname !\StartDir\endcsname\relax
+      \expandafter\let\csname !\StartDir\endcsname=\empty
+      \Needs{"mkdir -p \MYdir/\StartDir"}%     
+      \ifx \WWWdir\Undef \else
+         \Needs{"mkdir -p \MYdir/\StartDir"}%     
+         \Needs{"chmod 711 \WWWdir /StartDir"}%
+      \fi
+   \fi
+   \ifx \EndDir\empty \else
+       \expandafter\AppendDir \EndDir////*%
+       \expandafter\MakeDir
+   \fi
+}
+\def\AppendDir#1/#2/#3/*{%
+   \def\temp{#2}\ifx \temp\empty  \let\EndDir=\empty 
+   \else
+      \edef\StartDir{\ifx \StartDir\empty\else \StartDir/\fi
+                     #1}\def\EndDir{#2/#3}%
+   \fi
+}
+
+
+
+
+\SubSection{jkpex}
+%%%%%%%%%%%%%%%%%
+
+\def\version{version 0.1}
+\def\CopyYear{2015}
+
+\<jkpex\><<<
+jkpex 0 197
+'&#x0028;'        '' `%parenleftbig          `%   0 `<version 0`>
+'&#x0029;'        '' `%parenrightbig         `%   1 % jkpex.htf (unicode)            `version %
+'&#x005B;'        '' `%bracketleftbig        `%   2 % Deimantas Galcius %
+'&#x005D;'        '' `%bracketrightbig       `%   3 `<gversion 2`>
+'&#x230A;' '' `%floorleftbig          `%   4 `<gversion 3`>
+'&#x230B;' '' `%floorrightbig         `%   5 `<gversion 4`>
+'&#x2308;' '' `%ceilingleftbig        `%   6 `<gversion 5`>
+'&#x2309;' '' `%ceilingrightbig       `%   7 `<gversion 6`>
+'&#x007B;'        '' `%braceleftbig          `%   8 `<gversion 7`>
+'&#x007D;'        '' `%bracerightbig         `%   9 `<gversion 8`>
+'&#x27E8;' '' `%angbracketleftbig     `%  10 `<gversion 9`>
+'&#x27E9;' '' `%angbracketrightbig    `%  11 `<gversion 10`>
+'&#x007C;' '' `%vextendsingle         `%  12 `<gversion 11`>
+'&#x2225;' '' `%vextenddouble         `%  13 `<gversion 12`>
+'&#x2215;' '' `%slashbig              `%  14 `<gversion 13`>
+'&#x005C;' '' `%backslashbig          `%  15 `<gversion 14`>
+'&#x0028;'        '' `%parenleftBig          `%  16 `<gversion 15`>
+'&#x0029;'        '' `%parenrightBig         `%  17 `<gversion 16`>
+'&#x0028;'        '' `%parenleftbigg         `%  18 `<gversion 17`>
+'&#x0029;'        '' `%parenrightbigg        `%  19 `<gversion 18`>
+'&#x005B;'        '' `%bracketleftbigg       `%  20
+'&#x005D;'        '' `%bracketrightbigg      `%  21
+'&#x230A;' '' `%floorleftbigg         `%  22
+'&#x230B;' '' `%floorrightbigg        `%  23
+'&#x2308;' '' `%ceilingleftbigg       `%  24
+'&#x2309;' '' `%ceilingrightbigg      `%  25
+'&#x007B;'        '' `%braceleftbigg         `%  26
+'&#x007D;'        '' `%bracerightbigg        `%  27
+'&#x27E8;' '' `%angbracketleftbigg    `%  28
+'&#x27E9;' '' `%angbracketrightbigg   `%  29
+'&#x2215;' '' `%slashbigg             `%  30
+'&#x005C;' '' `%backslashbigg         `%  31
+'&#x0028;'        '' `%parenleftBigg         `%  32
+'&#x0029;'        '' `%parenrightBigg        `%  33
+'&#x005B;'        '' `%bracketleftBigg       `%  34
+'&#x005D;'        '' `%bracketrightBigg      `%  35
+'&#x230A;' '' `%floorleftBigg         `%  36
+'&#x230B;' '' `%floorrightBigg        `%  37
+'&#x2308;' '' `%ceilingleftBigg       `%  38
+'&#x2309;' '' `%ceilingrightBigg      `%  39
+'&#x007B;'        '' `%braceleftBigg         `%  40
+'&#x007D;'        '' `%bracerightBigg        `%  41
+'&#x27E8;' '' `%angbracketleftBigg    `%  42
+'&#x27E9;' '' `%angbracketrightBigg   `%  43
+'&#x2215;' '' `%slashBigg             `%  44
+'&#x005C;' '' `%backslashBigg         `%  45
+'&#x2215;' '' `%slashBig              `%  46
+'&#x005C;' '' `%backslashBig          `%  47
+'&#x0028;'        '' `%parenlefttp           `%  48
+'&#x0029;'        '' `%parenrighttp          `%  49
+'&#x230A;' '' `%bracketlefttp         `%  50
+'&#x230B;' '' `%bracketrighttp        `%  51
+'&#x2308;' '' `%bracketleftbt         `%  52
+'&#x2309;' '' `%bracketrightbt        `%  53
+'|'        '' `%bracketleftex         `%  54
+'|'        '' `%bracketrightex        `%  55
+'&#x0028;'        '' `%bracelefttp           `%  56
+'&#x0029;'        '' `%bracerighttp          `%  57
+'&#x0028;'        '' `%braceleftbt           `%  58
+'&#x0029;'        '' `%bracerightbt          `%  59
+'&#x007B;'        '' `%braceleftmid          `%  60
+'&#x007D;'        '' `%bracerightmid         `%  61
+'|'        '' `%braceex               `%  62
+'|'        '' `%arrowvertex           `%  63
+'&#x0028;'        '' `%parenleftbt           `%  64
+'&#x0029;'        '' `%parenrightbt          `%  65
+'|'        '' `%parenleftex           `%  66
+'|'        '' `%parenrightex          `%  67
+'&#x27E8;' '' `%angbracketleftBig     `%  68
+'&#x27E9;' '' `%angbracketrightBig    `%  69
+'&#x2294;' '' `%unionsqtext           `%  70
+'&#x2294;' '' `%unionsqdisplay        `%  71
+'&#x222E;' '' `%contintegraltext      `%  72
+'&#x222E;' '' `%contintegraldisplay   `%  73
+'&#x2299;' '' `%circledottext         `%  74
+'&#x2299;' '' `%circledotdisplay      `%  75
+'&#x2295;' '' `%circleplustext        `%  76
+'&#x2295;' '' `%circleplusdisplay     `%  77
+'&#x2297;' '' `%circlemultiplytext    `%  78
+'&#x2297;' '' `%circlemultiplydisplay `%  79
+'&#x2211;' '' `%summationtext         `%  80
+'&#x220F;' '' `%producttext           `%  81
+'&#x222B;' '' `%integraltext          `%  82
+'&#x22C3;' '' `%uniontext             `%  83
+'&#x22C2;' '' `%intersectiontext      `%  84
+'&#x228E;' '' `%unionmultitext        `%  85
+'&#x2227;' '' `%logicalandtext        `%  86
+'&#x2228;' '' `%logicalortext         `%  87
+'&#x2211;' '' `%summationdisplay      `%  88
+'&#x220F;' '' `%productdisplay        `%  89
+'&#x222B;' '' `%integraldisplay       `%  90
+'&#x22C3;' '' `%uniondisplay          `%  91
+'&#x22C2;' '' `%intersectiondisplay   `%  92
+'&#x228E;' '' `%unionmultidisplay     `%  93
+'&#x2227;' '' `%logicalanddisplay     `%  94
+'&#x2228;' '' `%logicalordisplay      `%  95
+'&#x2210;' '' `%coproducttext         `%  96
+'&#x2210;' '' `%coproductdisplay      `%  97
+'&#x005E;' '' `%hatwide               `%  98
+'&#x005E;' '' `%hatwider              `%  99
+'&#x005E;' '' `%hatwidest             `% 100
+'&#x007E;' '' `%tildewide             `% 101
+'&#x007E;' '' `%tildewider            `% 102
+'&#x007E;' '' `%tildewidest           `% 103
+'&#x005B;'        '' `%bracketleftBig        `% 104
+'&#x005D;'        '' `%bracketrightBig       `% 105
+'&#x230A;' '' `%floorleftBig          `% 106
+'&#x230B;' '' `%floorrightBig         `% 107
+'&#x2308;' '' `%ceilingleftBig        `% 108
+'&#x2309;' '' `%ceilingrightBig       `% 109
+'&#x007B;'        '' `%braceleftBig          `% 110
+'&#x007D;'        '' `%bracerightBig         `% 111
+'&#x2218;' '' `%radicalbig            `% 112
+'&#x2218;' '' `%radicalBig            `% 113
+'&#x2218;' '' `%radicalbigg           `% 114
+'&#x2218;' '' `%radicalBigg           `% 115
+'&#x2218;' '' `%radicalbt             `% 116
+'&#x2502;' '' `%radicalvertex         `% 117
+'&#x250C;' '' `%radicaltp             `% 118
+'&#x2551;' '' `%arrowvertexdbl        `% 119
+'&#x2191;' '' `%arrowtp               `% 120
+'&#x2193;' '' `%arrowbt               `% 121
+'&#x25DC;' '' `%bracehtipdownleft     `% 122
+'&#x25DD;' '' `%bracehtipdownright    `% 123
+'&#x25DF;' '' `%bracehtipupleft       `% 124
+'&#x25DE;' '' `%bracehtipupright      `% 125
+'&#x21D1;' '' `%arrowdbltp            `% 126
+'&#x21D3;' '' `%arrowdblbt            `% 127
+'&#x005E;' '' `%hatwide4              `% 128
+'&#x005E;' '' `%hatwide5              `% 129
+'&#x005E;' '' `%hatwide6              `% 130
+'&#x007E;' '' `%tildewide4            `% 131
+'&#x007E;' '' `%tildewide5            `% 132
+'&#x007E;' '' `%tildewide6            `% 133
+'&#x0361;' '' `%widearc1              `% 134
+'&#x0361;' '' `%widearc2              `% 135
+'&#x0361;' '' `%widearc3              `% 136
+'&#x0361;' '' `%widearc4              `% 137
+'&#x0361;' '' `%widearc5              `% 138
+'&#x0361;' '' `%widearc6              `% 139
+'&#x20D5;' '' `%widearcarrow1         `% 140
+'&#x20D5;' '' `%widearcarrow2         `% 141
+'&#x20D5;' '' `%widearcarrow3         `% 142
+'&#x20D5;' '' `%widearcarrow4         `% 143
+'&#x20D5;' '' `%widearcarrow5         `% 144
+'&#x20D5;' '' `%widearcarrow6         `% 145
+'&#x0361;' '' `%wideparen1            `% 146
+'&#x0361;' '' `%wideparen2            `% 147
+'&#x0361;' '' `%wideparen3            `% 148
+'&#x0361;' '' `%wideparen4            `% 149
+'&#x0361;' '' `%wideparen5            `% 150
+'&#x0361;' '' `%wideparen6            `% 151
+'' ''         `%nil                   `% 152
+'' ''         `%nil                   `% 153
+'' ''         `%nil                   `% 154
+'' ''         `%nil                   `% 155
+'' ''         `%nil                   `% 156
+'' ''         `%nil                   `% 157
+'' ''         `%nil                   `% 158
+'' ''         `%nil                   `% 159
+'' ''         `%nil                   `% 160
+'' ''         `%nil                   `% 161
+'' ''         `%nil                   `% 162
+'' ''         `%nil                   `% 163
+'' ''         `%nil                   `% 164
+'' ''         `%nil                   `% 165
+'' ''         `%nil                   `% 166
+'' ''         `%nil                   `% 167
+'' ''         `%nil                   `% 168
+'' ''         `%nil                   `% 169
+'' ''         `%nil                   `% 170
+'' ''         `%nil                   `% 171
+'' ''         `%nil                   `% 172
+'' ''         `%nil                   `% 173
+'' ''         `%nil                   `% 174
+'' ''         `%nil                   `% 175
+'' ''         `%nil                   `% 176
+'' ''         `%nil                   `% 177
+'' ''         `%nil                   `% 178
+'' ''         `%nil                   `% 179
+'&#x2211;' '' `%summationtext         `%  180
+'&#x220F;' '' `%producttext           `%  181
+'' ''         `%nil                   `% 182
+'' ''         `%nil                   `% 183
+'' ''         `%nil                   `% 184
+'' ''         `%nil                   `% 185
+'' ''         `%nil                   `% 186
+'' ''         `%nil                   `% 187
+'&#x2211;' '' `%summationdisplay      `%  188
+'&#x220F;' '' `%productdisplay        `%  189
+'' ''         `%nil                   `% 190
+'' ''         `%nil                   `% 191
+'' ''         `%nil                   `% 192
+'' ''         `%nil                   `% 193
+'' ''         `%nil                   `% 194
+'' ''         `%nil                   `% 195
+'&#x2210;' '' `%coproducttext         `%  196
+'&#x2210;' '' `%coproductdisplay      `%  197
+jkpex 0 197
+>>>
+\AddFont{jkpex}{unicode/kpfonts/jkpex}
+
+
+
+\<jkpsy\><<<
+jkpsy 0 128
+'&#x2212;' '' `%minus`% 0 `<version 0`>
+'&#x22C5;' '' `%periodcentered`% 1 % jkpsy.htf (unicode)            `version %
+'&#x00D7;' '' `%multiply`% 2 % Deimantas Galcius %
+'&#x2217;' '' `%asterisk`% 3 `<gversion 2`>
+'&#x00F7;' '' `%divide`% 4 `<gversion 3`>
+'&#x25C7;' '' `%lozenge`% 5 `<gversion 4`>
+'&#x00B1;' '' `%plusminus`% 6 `<gversion 5`>
+'&#x2213;' '' `%minusplus`% 7 `<gversion 6`>
+'&#x2295;' '' `%circleplus`% 8 `<gversion 7`>
+'&#x2296;' '' `%circleminus`% 9 `<gversion 8`>
+'&#x2297;' '' `%circlemultiply`%10 `<gversion 9`>
+'&#x2298;' '' `%circleslash`%11 `<gversion 10`>
+'&#x2299;' '' `%circledot`%12 `<gversion 11`>
+'&#x25CB;' '' `%circlebig`%13 `<gversion 12`>
+'&#x2218;' '' `%circlesmall`%14 `<gversion 13`>
+'&#x2219;' '' `%bullet`%15 `<gversion 14`>
+'&#x224D;' '' `%asymptote`%16 `<gversion 15`>
+'&#x2261;' '' `%equivalence`%17 `<gversion 16`>
+'&#x2286;' '' `%reflexsubset`%18 `<gversion 17`>
+'&#x2287;' '' `%reflexsuperset`%19 `<gversion 18`>
+'&#x2264;' '' `%lessequal`% 20 
+'&#x2265;' '' `%greaterequal`% 21 
+'&#x227C;' '' `%precedeorequal`% 22
+'&#x227D;' '' `%succeedorequal`% 23
+'&#x223C;' '' `%similar`% 24
+'&#x2248;' '' `%approxequal`% 25
+'&#x2282;' '' `%propersubset`% 26
+'&#x2283;' '' `%propersuperset`% 27
+'&#x226A;' '' `%lessless`% 28
+'&#x226B;' '' `%greatergreater`% 29
+'&#x227A;' '' `%precedes`% 30
+'&#x227B;' '' `%succeeds`% 31
+'&#x2190;' '' `%arrowleft`% 32
+'&#x2192;' '' `%arrowright`% 33
+'&#x2191;' '' `%arrowup`% 34
+'&#x2193;' '' `%arrowdown`% 35
+'&#x2194;' '' `%arrowboth`% 36
+'&#x2197;' '' `%arrowNE`% 37
+'&#x2198;' '' `%arrowSE`% 38
+'&#x2243;' '' `%similarorequal`% 39
+'&#x21D0;' '' `%arrowdblleft`% 40
+'&#x21D2;' '' `%arrowdblright`% 41
+'&#x21D1;' '' `%arrowdblup`% 42
+'&#x21D3;' '' `%arrowdbldown`% 43
+'&#x21D4;' '' `%arrowdblboth`% 44
+'&#x2196;' '' `%arrowNW`% 45
+'&#x2199;' '' `%arrowSW`% 46
+'&#x221D;' '' `%proportional`% 47
+'&#x2032;' '' `%minute`% 48
+'&#x221E;' '' `%infinity`% 49
+'&#x2208;' '' `%element`% 50
+'&#x220B;' '' `%ownership`% 51
+'&#x25B3;' '' `%triangleup`% 52
+'&#x25BD;' '' `%triangledown`% 53
+'&#x2044;' '' `%slashoverstrike`% 54
+'&#x21A6;' '' `%mapstochar`%        55
+'&#x2200;' '' `%universal`% forall             56
+'&#x2203;' '' `%existential`%57
+'&#x00AC;' '' `%logicalnot`% 58
+'&#x2205;' '' `%emptyset`% 59
+'&#x211C;' '' `%Real part`% 60
+'&#x2111;' '' `%Imaginary part`% 61
+'&#x22A4;' '' `%perpendiculardown`% 62
+'&#x22A5;' '' `%perpendicular`% 63
+'&#x2135;' '' `%aleph`% 64
+'&#x1D49C;' ''         script A         65
+'&#x212C;' ''         script B         66
+'&#x1D49E;' ''         script C         67
+'&#x1D49F;' ''         script D         68 
+'&#x2130;' ''         script E         69
+'&#x2131;' ''         script F         70
+'&#x1D4A2;' ''         script G         71
+'&#x210B;' ''         script H         72
+'&#x2110;' ''         script I         73
+'&#x1D4A5;' ''         script J         74
+'&#x1D4A6;' ''         script K         75
+'&#x2112;' ''         script L         76
+'&#x2133;' ''         script M         77
+'&#x1D4A9;' ''         script N         78
+'&#x1D4AA;' ''         script O         79
+'&#x1D4AB;' ''         script P         80
+'&#x1D4AC;' ''         script Q         81
+'&#x211B;' ''         script R         82
+'&#x1D4AE;' ''         script S         83
+'&#x1D4AF;' ''         script T         84
+'&#x1D4B0;' ''         script U         85
+'&#x1D4B1;' ''         script V         86
+'&#x1D4B2;' ''         script W         87
+'&#x1D4B3;' ''         script X         88
+'&#x1D4B4;' ''         script Y         89
+'&#x1D4B5;' ''         script Z         90
+'&#x222A;' '' `%union`% 91
+'&#x2229;' '' `%intersection`% 92
+'&#x228E;' '' `%unionplus`% 93
+'&#x2227;' '' `%logicaland`% 94
+'&#x2228;' '' `%logicalor`% 95
+'&#x22A2;' '' `%verticaldash`% 96
+'&#x22A3;' '' `%dashvertical`% 97
+'&#x230A;' '' `%bracketleftbt`% 98
+'&#x230B;' '' `%bracketrightbt`% 99
+'&#x2308;' '' `%bracketlefttp`% 100
+'&#x2309;' '' `%bracketrighttp`% 101
+'&#x007B;' '' `%braceleft`% 102
+'&#x007D;' '' `%braceright`% 103
+'&#x27E8;' '' `%angleleft`% 104
+'&#x27E9;' '' `%angleright`% 105
+'&#x007C;' '' `%barsingle`% 106
+'&#x2225;' '' `%bardouble`% 107
+'&#x2195;' '' `%arrowupdown`% 108
+'&#x21D5;' '' `%arrowdblupdown`% 109
+'&#x2216;' '' `%backslash`% 110
+'&#x2240;' '' `%wreathproduct`% 111
+'&#x221A;' '' `%radical`% 112
+'&#x2210;' '' `%coproduct`% 113
+'&#x2207;' '' `%gradient`% 114
+'&#x222B;' '' `%integral`% 115
+'&#x2294;' '' `%cupsquare`% 116
+'&#x2293;' '' `%capsquare`% 117
+'&#x2291;' '' `%subseteqsquare`% 118
+'&#x2292;' '' `%superseteqsquare`% 119
+'&#x00A7;' '' `%section`% 120
+'&#x2020;' '' `%dagger`% 121
+'&#x2021;' '' `%daggerdbl`% 122
+'&#x00B6;' '' `%paragraph`% 123
+'&#x2663;' '' `%club`% 124
+'&#x2662;' '' `%diamondoutline`% 125
+'&#x2661;' '' `%heartoutline`% 126
+'&#x2660;' '' `%spade`% 127
+'&#x2205;' '' `%emptyset`% 128
+jkpsy 0 128
+>>>
+
+\AddFont{jkpsy}{unicode/kpfonts/jkpsy}
+
+
+
+
+\<jkpmi\><<<
+jkpmi 0 239
+'&#x0393;' ''  `% Gamma `%     0 
+'&#x0394;' ''  `% Delta `%     1 % jkpmi.htf (unicode)             %
+'&#x0398;' ''  `% Theta `%     2 % Deimantas Galcius 
+'&#x039B;' ''  `% Lambda `%    3 `<gversion 2`>
+'&#x039E;' ''  `% Xi `%        4 `<gversion 3`>
+'&#x03A0;' ''  `% Pi `%        5 `<gversion 4`>
+'&#x03A3;' ''  `% Sigma `%     6 `<gversion 5`>
+'&#x03A5;' ''  `% Upsilon `%   7 `<gversion 6`>
+'&#x03A6;' ''  `% Phi `%       8 `<gversion 7`>
+'&#x03A8;' ''  `% Psi `%       9 `<gversion 8`>
+'&#x03A9;' ''  `% Omega `%    10 `<gversion 9`>
+'&#x03B1;' ''  `% alpha `%    11 `<gversion 10`>
+'&#x03B2;' ''  `% beta `%     12 `<gversion 11`>
+'&#x03B3;' ''  `% gamma `%    13 `<gversion 12`>
+'&#x03B4;' ''  `% delta `%    14 `<gversion 13`>
+'&#x1D716;' ''  `%epsilon`%  15 `<gversion 14`>
+'&#x03B6;' ''  `% zeta `%     16 `<gversion 15`>
+'&#x03B7;' ''  `% eta `%      17 `<gversion 16`>
+'&#x1D703;' ''  `% theta `%    18 `<gversion 17`>
+'&#x03B9;' ''  `% iota `%     19 `<gversion 18`>
+'&#x03BA;' ''  `% kappa `%              20
+'&#x03BB;' ''  `% lambda `%             21
+'&#x03BC;' ''  `% mu `%                 22
+'&#x03BD;' ''  `% nu `%                 23
+'&#x03BE;' ''  `% xi `%                 24
+'&#x03C0;' ''  `% pi `%                 25
+'&#x03C1;' ''  `% rho `%                26
+'&#x03C3;' ''  `% sigma `%              27
+'&#x03C4;' ''  `% tau `%                28
+'&#x03C5;' ''  `% upsilon `%            29
+'&#x03D5;' ''  `% phi `%                30
+'&#x03C7;' ''  `% chi `%                31
+'&#x03C8;' ''  `% psi `%                32
+'&#x03C9;' ''  `% omega `%              33
+'&#x1D700;' ''  `%varepsilon`%         34
+'&#x1D717;' ''  `%vartheta`%           35
+'&#x03D6;' ''  `% varpi `%              36
+'&#x03F1;' ''  `% varrho `%             37
+'&#x03C2;' ''  `% varsigma `%            38
+'&#x03C6;' ''  `% varphi `%             39
+'&#x21BC;' ''  `% leftharpoonup `%      40
+'&#x21BD;' ''  `% leftharpoondown `%    41
+'&#x21C0;' ''  `% righttharpoonup `%    42
+'&#x21C1;' ''  `% rightharpoondown `%   43
+'``'        ''            left quote         44
+*'*        **  right quota        45
+'&#x22B3;' ''  triangleright      46
+'&#x22B2;' ''  triangleleft       47
+'0'        ''  number 0           48
+'1'        ''  number 1           49
+'2'        ''  number 2           50
+'3'        ''  number 3           51
+'4'        ''  number 4           52
+'5'        ''  number 5           53
+'6'        ''  number 6           54
+'7'        ''  number 7           55
+'8'        ''  number 8           56
+'9'        ''  number 9           57
+'.'        ''  full stop          58
+','        ''  comma              59
+'&#x003C;' ''  less than          60
+'&#x2215;' ''  division slash     61
+'&#x003E;' ''  greater than       62
+'&#x22C6;' ''  star               63
+'&#x2202;' ''  partial            64
+'A'        ''  letter A           65
+'B'        ''  letter B           66
+'C'        ''  letter C           67
+'D'        ''  letter D           68 
+'E'        ''  letter E           69
+'F'        ''  letter F           70
+'G'        ''  letter G           71
+'H'        ''  letter H           72
+'I'        ''  letter I           73
+'J'        ''  letter J           74
+'K'        ''  letter K           75
+'L'        ''  letter L           76
+'M'        ''  letter M           77
+'N'        ''  letter N           78
+'O'        ''  letter O           79
+'P'        ''  letter P           80
+'Q'        ''  letter Q           81
+'R'        ''  letter R           82
+'S'        ''  letter S           83
+'T'        ''  letter T           84
+'U'        ''  letter U           85
+'V'        ''  letter V           86
+'W'        ''  letter W           87
+'X'        ''  letter X           88
+'Y'        ''  letter Y           89
+'Z'        ''  letter Z           90
+'&#x266D;' ''  flat               91
+'&#x266E;' ''  natural            92
+'&#x266F;' ''  sharp              93
+'&#x2323;' ''  smile              94
+'&#x2322;' ''  frown              95
+'&#x2113;' ''  script small l     96
+'a'        ''  letter a           97
+'b'        ''  letter b           98
+'c'        ''  letter c           99
+'d'        ''  letter d          100
+'e'        ''  letter e          101
+'f'        ''  letter f          102
+'g'        ''  letter g          103
+'h'        ''  letter h          104
+'i'        ''  letter i          105
+'j'        ''  letter j          106
+'k'        ''  letter k          107
+'l'        ''  letter l          108
+'m'        ''  letter m          109
+'n'        ''  letter n          110
+'o'        ''  letter o          111
+'p'        ''  letter p          112
+'q'        ''  letter q          113
+'r'        ''  letter r          114
+'s'        ''  letter s          115
+'t'        ''  letter t          116
+'u'        ''  letter u          117
+'v'        ''  letter v          118
+'w'        ''  letter w          119
+'x'        ''  letter x          120
+'y'        ''  letter y          121
+'z'        ''  letter z          122
+'&#x0131;' ''  dotless i         123
+'&#x0237;' ''  dotless j         124
+'&#x2118;' ''  weierstass p      125
+'&#x20D7;' ''  small arrow above 126
+'&#x0361;' ''  ligature tie      127
+'&#x2202;' ''   partialup    128
+'&#x2202;' ''   partialsf    129
+'&#x2202;' ''   partialupsf    130
+'&#x266D;' ''   flatsf    131
+'&#x2113;' ''   lscript    132
+'&#x2118;' ''  weierstrassf    133
+'' ''   undef    134
+'' ''   undef    135
+'' ''   undef    136
+'' ''   undef    137
+'' ''   undef    138
+'' ''   undef    139
+'' ''   undef    140
+'' ''   undef    141
+'' ''   undef    142
+'' ''   undef    143
+'' ''   undef    144
+'' ''   undef    145
+'' ''   undef    146
+'' ''   undef    147
+'' ''   undef    148
+'' ''   undef    149
+'' ''   undef    150
+'' ''   undef    151
+'' ''   undef    152
+'' ''   undef    153
+'' ''   undef    154
+'' ''   undef    155
+'' ''   undef    156
+'' ''   undef    157
+'' ''   undef    158
+'' ''   undef    159
+'' ''   undef    160
+'' ''   undef    161
+'' ''   undef    162
+'' ''   undef    163
+'' ''   undef    164
+'' ''   undef    165
+'' ''   undef    166
+'' ''   undef    167
+'' ''   undef    168
+'' ''   undef    169
+'' ''   undef    170
+'' ''   undef    171
+'' ''   undef    172
+'' ''   undef    173
+'' ''   undef    174
+'' ''   undef    175
+'' ''   undef    176
+'' ''   undef    177
+'' ''   undef    178
+'' ''   undef    179
+'' ''   undef    180
+'' ''   undef    181
+'' ''   undef    182
+'' ''   undef    183
+'' ''   undef    184
+'' ''   undef    185
+'' ''   undef    186
+'' ''   undef    187
+'' ''   undef    188
+'' ''   undef    189
+'' ''   undef    190
+'' ''   undef    191
+'' ''   undef    192
+'' ''   undef    193
+'' ''   undef    194
+'' ''   undef    195
+'' ''   undef    196
+'' ''   undef    197
+'' ''   undef    198
+'' ''   undef    199
+'&#x0393;' ''  `% Gamma `%     200
+'&#x0394;' ''  `% Delta `%         201
+'&#x0398;' ''  `% Theta `%        202
+'&#x039B;' ''  `% Lambda `%    203
+'&#x039E;' ''  `% Xi `%         204
+'&#x03A0;' ''  `% Pi `%       205
+'&#x03A3;' ''  `% Sigma `%    206
+'&#x03A5;' ''  `% Upsilon `%   207
+'&#x03A6;' ''  `% Phi `%       208
+'&#x03A8;' ''  `% Psi `%       209
+'&#x03A9;' ''  `% Omega `%   210
+'&#x03B1;' ''  `% alpha `%    211
+'&#x03B2;' ''  `% beta `%     212
+'&#x03B3;' ''  `% gamma `%    213
+'&#x03B4;' ''  `% delta `%    214
+'&#x1D716;' ''  `%epsilon`%  215
+'&#x03B6;' ''  `% zeta `%     216
+'&#x03B7;' ''  `% eta `%      217
+'&#x1D703;' ''  `% theta `%   218
+'&#x03B9;' ''  `% iota `%     219
+'&#x03BA;' ''  `% kappa `%       220       
+'&#x03BB;' ''  `% lambda `%          221 
+'&#x03BC;' ''  `% mu `%                 222
+'&#x03BD;' ''  `% nu `%                 223
+'&#x03BE;' ''  `% xi `%                 224
+'&#x03C0;' ''  `% pi `%                225
+'&#x03C1;' ''  `% rho `%             226
+'&#x03C3;' ''  `% sigma `%         227
+'&#x03C4;' ''  `% tau `%              228
+'&#x03C5;' ''  `% upsilon `%         229
+'&#x03D5;' ''  `% phi `%               230
+'&#x03C7;' ''  `% chi `%               231
+'&#x03C8;' ''  `% psi `%               232
+'&#x03C9;' ''  `% omega `%        233
+'&#x1D700;' ''  `%varepsilon`%  234 
+'&#x1D717;' ''  `%vartheta`%      235
+'&#x03D6;' ''  `% varpi `%           236
+'&#x03F1;' ''  `% varrho `%         237
+'&#x03C2;' ''  `% varsigma `%    238
+'&#x03C6;' ''  `% varphi `%         239
+jkpmi 0 239
+>>>
+
+\<comment\><<<
+'' ''   undef    240
+'' ''   undef    241
+'' ''   undef    242
+'' ''   undef    243
+'' ''   undef    244
+'' ''   undef    245
+'' ''   undef    246
+'' ''   undef    247
+'' ''   undef    248
+'' ''   undef    249
+'' ''   undef    250
+'' ''   undef    251
+'' ''   undef    252
+'' ''   undef    253
+'' ''   undef    254
+'' ''   undef    255           
+>>>
+
+
+\AddFont{jkpmi}{unicode/kpfonts/jkpmi}
+
+\<jkpmn7t\><<<
+.ptmr7t
+>>>
+\AddFont{jkpmn7t}{unicode/kpfonts/jkpmn7t}
+
+\<jkpmn8t\><<<
+.ptmr8t
+>>>
+\AddFont{jkpmn8t}{unicode/kpfonts/jkpmn8t}
+
+\<jkpmit8t\><<<
+.ptmri8t
+>>>
+\AddFont{jkpmit8t}{unicode/kpfonts/jkpmit8t}
+
+\<jkpbn8t\><<<
+.ptmb8t
+>>>
+
+\AddFont{jkpbn8t}{unicode/kpfonts/jkpbn8t}
+
+
+\bye
