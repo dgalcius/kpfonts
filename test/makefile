@@ -1,0 +1,4 @@
+
+
+default:
+	htlatex test.tex

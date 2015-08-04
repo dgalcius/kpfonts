@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{ntheorem}
+\newtheorem{theorem}{Theorem}
+\usepackage{amsmath}
+\DeclareMathOperator{\Res}{Res}
+\usepackage{kpfonts}
+
+\begin{document}
+\ifdefined\HCode
+\Configure{Picture}{.svg}
+\fi
+
+\begin{theorem}[Residue Theorem]
+Let $f$ be analytic in the region $G$ except for the isolated 
+singularities $a_1,a_2,\dots,a_m$. If $\gamma$ is a closed 
+rectifiable curve in $G$ which does not pass through any of the 
+points $a_k$ and if $\gamma\approx 0$ in $G$, then
+\[
+  \frac{1}{2\pi i}\int_\gamma\! f = \sum_{k=1}^m 
+  n(\gamma;a_k)\Res(f;a_k)\,.
+\]
+\end{theorem}
+\end{document}
+\end{document}
