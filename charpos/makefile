@@ -30,13 +30,13 @@ clean:
 %.dir:
 	rm -rf $* 
 	mkdir $*
-	mv $**.png x$*
-	mv $**.html x$*
-	mv $**.css x$*
+	mv $**.png $*
+	mv $**.html $*
+	mv $**.css $*
 
 
 %.font: %.htm %.dvipng %.rubypng  %.htmhtm %.dir
-	@echo done $@. See x$@ folder.
+	@echo done $@. See "'$*/$*.html'".
 
 
 
